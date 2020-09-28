@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <style>@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+
+body {
+  padding: 40px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.grid > article {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.grid > article img {
+  max-width: 100%;
+}
+
+.grid .text {
+  padding: 20px;
+  text-align: center;
+}
+
+.grid .text h3 {
+  font-size: 1.4rem;
+  font-family: 'Fredoka One', cursive;
+}
+
+.grid .text p {
+  font-size: 0.9rem;
+}
+
+.grid .text p a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #555;
+  font-family: 'Courgette', cursive;
+}
+body {
+  padding: 0 10px;
+  background-image: url("https://i.postimg.cc/BnhHF28S/nastuh-abootalebi-y-Wwob8kw-OCk-unsplash-modified.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center;">Top Health Insurance Plans</h2>
+{% for product in dests%}
+<br>
+<div style="padding-left:25%;padding-right:25%;"><div class="card text-center">
+  <div class="card-header">
+      <b>{{product.product_type}}</b>
+  </div>
+  <div class="card-body">
+      <div><img src="https://craftcabana.s3.ap-south-1.amazonaws.com/virtusa.png"width="108"height="70"></div><br><div><h5 class="card-title">{{product.product_name}}</h5></div>
+      <div style="font-size:17px;"><p class="card-text">   {{product.product_desc}}</p></div>
+      <br>
+      <div ><a href="#" class="btn btn-primary">Know more about the policy</a></div>
+      <br>
+      <div>Starting at Rs. 1000/per month</div>
+  </div>
+  <div class="card-footer text-muted">
+    Deal:10% Discount
+  </div>
+</div></div>{% endfor %}
+</div>
+</body>
+</html>

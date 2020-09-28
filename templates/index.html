@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Montserrat&display=swap" rel="stylesheet">
+    <title>Data collection form</title>
+  <style>
+      :root {
+  --box-height: 40px;
+  --border-radius: 5px;
+  --space-between: 20px;
+  --font-size: 16px;
+
+  --color-0: #ffffff;
+  --color-1: #dcdcdd;
+  --color-2: #c5c3c6;
+  --color-3: #212529;
+  --color-4: #118ab2;
+  --color-5: #ce4257;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 10px;
+  background-image: url("https://i.postimg.cc/BnhHF28S/nastuh-abootalebi-y-Wwob8kw-OCk-unsplash-modified.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+#survey-container {
+  margin: 20px auto;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 840px;
+  border-radius: calc(3 * var(--border-radius));
+}
+
+#title {
+  margin: 30px 0;
+  text-align: center;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: var(--color-3);
+}
+
+#description {
+  margin: 30px 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-3);
+}
+
+#survey-form {
+  padding: 30px;
+  padding-top: 20px;
+  background: var(--color-1);
+  opacity: 98%;
+  border: none;
+  border-radius: calc(2 * var(--border-radius));
+}
+
+#survey-form * {
+  font-size: var(--font-size);
+}
+
+.row-label,
+.row-input {
+  padding: 5px 10px;
+  margin: 0;
+  height: var(--box-height);
+  width: 100%;
+  display: block;
+}
+
+.row-label {
+  color: var(--color-3);
+  font-weight: 600;
+}
+
+.row-label:not(:first-child) {
+  margin-top: var(--space-between);
+}
+
+.row-input:not(.small) {
+  background: white;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+.inline-label {
+  margin-left: 10px;
+  color: var(--color-3);
+}
+
+.small {
+  height: calc(var(--box-height) * 0.75);
+}
+
+#comments {
+  padding: 10px;
+  margin: 0;
+  height: 120px;
+  width: 100%;
+  background: white;
+  border: none;
+  border-radius: var(--border-radius);
+  resize: none;
+}
+
+#submit {
+  margin-top: calc(2 * var(--space-between));
+  height: var(--box-height);
+  width: 100%;
+  background: var(--color-4);
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+  </style>
+</head>
+
+<body>
+<div id="survey-container">
+
+  <h3 id="title">Life Insurance Product Recommendation</h3>
+
+  <p id="description">Please Fill in the form:</p>
+
+  <form id="survey-form"method="post"action="Finaloutput">
+    {%csrf_token%}
+    <!-- education dropdown -->
+    <label class="row-label" for="dropdown">Please select your age category:</label>
+    <select id="dropdown" class="row-input"name="dropdown" required>
+      <option disabled selected value="">Select an option</option>
+      <option value="Young Adult"required>Young Adult : from 18 - 35</option>
+      <option value="Senior Adult"required>Senior Adult: from 36 - 55</option>
+      <option value="Elder"required>Elder : 55 or older</option>
+    </select>
+       <label class="row-label" for="dropdown">Please select your region:</label>
+    <select id="dropdown1" class="row-input"name="dropdown1" required>
+      <option disabled selected value="">Select an option</option>
+      <option value="northeast">northeast</option>
+      <option value="northwest">northwest</option>
+      <option value="southeast">southeast</option>
+        <option value="southwest">southwest</option>
+    </select>
+
+    <!-- years of experience -->
+    <label id="number-label" class="row-label" for="number"> No of childrens:</label>
+    <input id="number"name="children" class="row-input" type="number" placeholder="Enter number of childrens you have" min="0" max="50"required>
+
+
+    <!-- salary radio -->
+    <p class="row-label">Gender:</p>
+
+    <label class="row-input small" for="below-3k">
+      <input type="radio" id="male" name="radio" value="male"required>
+      <span class="inline-label">Male</span>
+    </label>
+
+    <label class="row-input small" for="3k-4k">
+      <input type="radio" id="female" name="radio" value="female"required>
+      <span class="inline-label">Female</span>
+    </label>
+          <p class="row-label">Body mass index:</p>
+
+    <label class="row-input small" for="below-3k">
+      <input type="radio" id="underweight" name="rad" value="Underweight"required>
+      <span class="inline-label">Under Weight: Body Mass Index (BMI) < 18.5</span>
+    </label>
+
+    <label class="row-input small" for="3k-4k">
+      <input type="radio" id="Normalweight" name="rad" value="Normal Weight"required>
+      <span class="inline-label">Normal Weight: Body Mass Index (BMI) >= 18.5 and Body Mass Index (BMI) < 24.9</span>
+    </label>
+      <label class="row-input small" for="3k-4k">
+      <input type="radio" id="Overweight" name="rad" value="Overweight"required>
+      <span class="inline-label">Overweight: Body Mass Index (BMI) >= 25 and Body Mass Index (BMI) < 29.9</span>
+    </label>
+      <label class="row-input small" for="3k-4k">
+      <input type="radio" id="Obese" name="rad" value="Obese"required>
+      <span class="inline-label">Obese: Body Mass Index (BMI) > 30</span>
+    </label>
+        <p class="row-label">Do you smoke?:</p>
+
+    <label class="row-input small" for="below-3k">
+      <input type="radio" id="yes" name="ra" value="yes"required>
+      <span class="inline-label">Yes</span>
+    </label>
+      <label class="row-input small" for="below-3k">
+      <input type="radio" id="no" name="ra" value="no"required>
+      <span class="inline-label">No</span>
+    </label>
+
+    <!-- comments textarea -->
+
+    <!-- submit button -->
+    <button id="submit" type="submit">Submit</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>
